@@ -4,12 +4,12 @@ var reading_time = {
         flux_list = $("div[id^='flux']");
 
         for(var i = 0; i < flux_list.length; i++) {
-            //console.log($("div[id^='flux']")[i], "Length (words): ", flux_words_count($("div[id^='flux']")[i]))
+            //console.log($("div[id^='flux']")[i], "Length (words): ", reading_time.flux_words_count($("div[id^='flux']")[i]))
 
             flux = $("div[id^='flux']")[i]
 
-            words_count = flux_words_count($("div[id^='flux']")[i]) // count the words
-            reading_time = calc_read_time(words_count, 300)
+            words_count = reading_time.flux_words_count($("div[id^='flux']")[i]) // count the words
+            reading_time = reading_time.calc_read_time(words_count, 300)
 
             // add the reading time just before the title
             $("#" + flux.id + " ul.horizontal-list li.item.title")[0].textContent = '[' + reading_time + 'min] ' + $("#" + flux.id + " ul.horizontal-list li.item.title")[0].textContent
