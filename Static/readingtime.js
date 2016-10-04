@@ -20,8 +20,8 @@ var reading_time = {
             reading_time.words_count = reading_time.flux_words_count($("div[id^='flux']")[i]) // count the words
             reading_time.reading_time = reading_time.calc_read_time(reading_time.words_count, 300)
 
-            // add the reading time just before the title
-            $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title")[0].textContent = '[' + reading_time.reading_time + 'min] ' + $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title")[0].textContent
+            // add the reading time just after the feed name
+            $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].childNodes[0].childNodes[2].textContent = reading_time.reading_time + 'm| ' + $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].childNodes[0].childNodes[2].textContent
         }
     },
 
