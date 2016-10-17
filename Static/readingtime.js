@@ -21,7 +21,7 @@ var reading_time = {
             reading_time.reading_time = reading_time.calc_read_time(reading_time.words_count, 300) // change this number (in words) to your prefered reading speed
 
             // add the reading time just after the feed name
-            if ( !($("#" + reading_time.flux.id + " ul.horizontal-list li.item.title")[0].textContent.search(reading_time.reading_time + 'm|')) ) {
+            if ( $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].textContent.substring(1,(reading_time.reading_time + 'm|').length +1) != reading_time.reading_time + 'm|' ) {
                 $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].childNodes[0].childNodes[2].textContent = reading_time.reading_time + 'm| ' + $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].childNodes[0].childNodes[2].textContent
             }
 
@@ -62,3 +62,4 @@ function add_load_more_listener() {
 
 
 window.onload = add_load_more_listener
+
