@@ -1,13 +1,14 @@
-'use strict';
+(function reading_time () {
+    'use strict';
 
-var reading_time = {
+    var reading_time = {
 
-    flux_list: null,
-    flux: null,
-    textContent: null,
-    words_count: null,
-    read_time: null,
-    reading_time: null,
+        flux_list: null,
+        flux: null,
+        textContent: null,
+        words_count: null,
+        read_time: null,
+        reading_time: null,
 
     init: function() {
         var flux_list = $("div[id^='flux']");
@@ -50,16 +51,19 @@ var reading_time = {
         //console.log('Reading time: ', reading_time.read_time)
         return reading_time.read_time
     },
-};
+    };
 
 
-function add_load_more_listener() {
-    reading_time.init()
-    document.body.addEventListener('freshrss:load-more', function (e) {
+    function add_load_more_listener() {
         reading_time.init()
+        document.body.addEventListener('freshrss:load-more', function (e) {
+            reading_time.init()
         })
-}
+    }
+
+    document.addEventListener('DOMContentLoaded', add_load_more_listener)
+
+}());
 
 
-window.onload = add_load_more_listener
 
