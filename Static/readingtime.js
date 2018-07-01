@@ -26,8 +26,7 @@
                 if ( $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title a")[0].textContent.substring(1,(reading_time.reading_time + 'm - ').length +1) != reading_time.reading_time + 'm - ' ) {
                                         $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title a")[0].childNodes[0].childNodes[2].textContent = reading_time.reading_time + 'm - ' + $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title a")[0].childNodes[0].childNodes[2].textContent
                     }
-                }
-            } else {
+                } else {
                 // add the reading time just after the feed name
                 if ( $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].textContent.substring(1,(reading_time.reading_time + 'm|').length +1) != reading_time.reading_time + 'm|' ) {
                     $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].childNodes[0].childNodes[2].textContent = reading_time.reading_time + 'm| ' + $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].childNodes[0].childNodes[2].textContent
