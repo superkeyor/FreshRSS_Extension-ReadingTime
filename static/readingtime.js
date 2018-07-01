@@ -24,7 +24,7 @@
             if (document.body.clientWidth <= 840) { // in mobile mode, the feed name is not visible (there is only the favicon)
                 // add the reading time right before article's title
                 // in that case, [Time] - [Title] format is used instead of a "|" (as it looks better and doesn't take much more space)
-                if ( $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title a")[0].textContent.substring(1,(reading_time.reading_time + 'm - ').length +1) != reading_time.reading_time + 'm - ' ) {
+                if ( $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title a")[0].textContent.substring(0,(reading_time.reading_time + 'm - ').length) != reading_time.reading_time + 'm - ' ) {
                                         $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title a")[0].textContent = reading_time.reading_time + 'm - ' + $("#" + reading_time.flux.id + " ul.horizontal-list li.item.title a")[0].textContent
                     }
                 } else {
