@@ -4,7 +4,6 @@
     'use strict';
 
     var reading_time = {
-
         flux_list: null,
  flux: null,
  textContent: null,
@@ -13,14 +12,15 @@
  reading_time: null,
 
  init: function() {
-     var flux_list = $("div[id^='flux']");
+     var flux_list = document.querySelectorAll('[id^="flux_"]');
+     console.log(flux_list)
 
      for (var i = 0; i < flux_list.length; i++) {
          //console.log($("div[id^='flux']")[i], "Length (words): ", reading_time.flux_words_count($("div[id^='flux']")[i]))
 
-         reading_time.flux = $("div[id^='flux']")[i];
+         reading_time.flux = flux_list[i];
 
-         reading_time.words_count = reading_time.flux_words_count($("div[id^='flux']")[i]); // count the words
+         reading_time.words_count = reading_time.flux_words_count(flux_list[i]); // count the words
          reading_time.reading_time = reading_time.calc_read_time(reading_time.words_count, 300); // change this number (in words) to your prefered reading speed
 
          if (document.body.clientWidth <= 840) { // in mobile mode, the feed name is not visible (there is only the favicon)
@@ -31,8 +31,9 @@
              }
          } else {
              // add the reading time just after the feed name
-             if ( $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].textContent.substring(1, (reading_time.reading_time + 'm|').length + 1) != reading_time.reading_time + 'm|' ) {
-                 $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].childNodes[0].childNodes[2].textContent = reading_time.reading_time + 'm| ' + $("#" + reading_time.flux.id + " ul.horizontal-list li.item.website")[0].childNodes[0].childNodes[2].textContent;
+             console.log(document.querySelector("#" + reading_time.flux.id + " ul.horizontal-list li.item.website"))
+             if ( document.querySelector("#" + reading_time.flux.id + " ul.horizontal-list li.item.website").textContent.substring(1, (reading_time.reading_time + 'm|').length + 1) != reading_time.reading_time + 'm|' ) {
+                 document.querySelector("#" + reading_time.flux.id + " ul.horizontal-list li.item.website").childNodes[0].childNodes[2].textContent = reading_time.reading_time + 'm| ' + document.querySelector("#" + reading_time.flux.id + " ul.horizontal-list li.item.website").childNodes[0].childNodes[2].textContent;
              }
          }
 
@@ -64,13 +65,6 @@
     };
 
     function add_load_more_listener() {
-        if (!window.$) {
-            if (window.console) {
-                console.log('FreshRSS extension ReadingTime waiting for jQuery…');
-            }
-            window.setTimeout(add_load_more_listener, 100);
-            return;
-        }
         reading_time.init();
         document.body.addEventListener('freshrss:load-more', function (e) {
             reading_time.init();
