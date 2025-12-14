@@ -50,7 +50,7 @@
                 ul.insertBefore(li, ul.children[ul.children.length - 1]);
                 if (reading_time.reading_time !== '<1' && reading_time.reading_time > reading_time.LONG_READING_TIME_THRESHOLD) {
                     // ul.children[3].children[0].style.color='red';  // change title color
-                    ul.children[3].children[0].text=ul.children[3].children[0].text+'⏳'
+                    ul.children[3].children[0].text=ul.children[3].children[0].text+' ⏳'
                 }
             }
         },
